@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="in.co.vertex.feedback.model.Question" table="questiontable">
+
+		<id name="questionId" type="int" column="questionId" unsaved-value="0">
+
+			<generator class="increment" />
+
+		</id>
+
+
+		<property name="label" type="java.lang.String" column="label"
+
+			not-null="true" length="250" />
+
+
+		<set name="options" table="question_option" cascade="all">
+
+			<key column="questionId" />
+
+			<many-to-many column="optionId"
+				class="in.co.vertex.feedback.model.Option" />
+
+		</set>
+
+		<set name="forms" table="question_form" cascade="all">
+
+			<key column="questionId" />
+
+			<many-to-many column="formId" class="in.co.vertex.feedback.model.Form" />
+		</set>
+
+
+	</class>
+
+
+	<class name="in.co.vertex.feedback.model.Form" table="formtable">
+
+		<id name="formId" type="int" column="formId" unsaved-value="0">
+
+			<generator class="native" />
+
+		</id>
+
+		<property name="label" type="java.lang.String" column="label"
+
+			not-null="true" length="250" />
+
+		<set name="questions" table="question_form" cascade="all">
+
+			<key column="formId" />
+
+			<many-to-many column="questionId"
+				class="in.co.vertex.feedback.model.Question" />
+
+		</set>
+
+	</class>
+
+
+	<class name="in.co.vertex.feedback.model.Answer" table="answertable">
+		<id name="answerId" type="int" column="answerId" unsaved-value="0">
+
+			<generator class="native" />
+
+		</id>
+
+		<property name="comment" type="java.lang.String" column="comment"
+
+			not-null="true" length="500" />
+
+		<many-to-one name="questionId" class="in.co.vertex.feedback.model.Question"
+			column="questionId" not-null="true"></many-to-one>
+
+
+		<many-to-one name="optionId" class="in.co.vertex.feedback.model.Option"
+			column="optionId" not-null="true"></many-to-one>
+
+
+		<many-to-one name="userId" class="in.co.vertex.feedback.model.User"
+			column="userId" not-null="true"></many-to-one>
+
+		<many-to-one name="formId" class="in.co.vertex.feedback.model.Form"
+			column="formId" not-null="true"></many-to-one>
+
+		<many-to-one name="batchId" class="in.co.vertex.feedback.model.Batch"
+			column="batchId" not-null="true"></many-to-one>
+
+	</class>
+
+
+	<class name="in.co.vertex.feedback.model.Batch" table="batchtable">
+		<id name="batchId" type="int" column="batchId" unsaved-value="0">
+
+			<generator class="native" />
+
+		</id>
+
+		<property name="batchName" type="java.lang.String" column="batchName"
+
+			not-null="true" length="100" />
+
+
+		<property name="startDate" type="java.util.Date" column="startDate"
+
+			not-null="true" />
+
+		<property name="endDate" type="java.util.Date" column="endDate"
+
+			not-null="true" />
+
+		<set name="users" table="batch_user" cascade="all">
+
+			<key column="batchId" />
+
+			<many-to-many column="userId" class="in.co.vertex.feedback.model.User" />
+		</set>
+
+		<many-to-one name="formId" class="in.co.vertex.feedback.model.Form"
+			column="formId" not-null="true"></many-to-one>
+	</class>
+
+
+	<class name="in.co.vertex.feedback.model.User" table="usertable">
+
+		<id name="Id" type="int" column="Id" unsaved-value="0">
+
+			<generator class="native" />
+
+		</id>
+
+		<property name="userId" type="java.lang.String" column="userId"
+
+			not-null="true" length="250" />
+
+
+		<property name="password" type="java.lang.String" column="password"
+
+			not-null="true" length="250" />
+		<property name="fullname" type="java.lang.String" column="fullname"
+
+			not-null="true" length="250" />
+	</class>
+
+
+	<class name="in.co.vertex.feedback.model.Option" table="optiontable">
+
+		<id name="optionId" type="int" column="optionId" unsaved-value="0">
+
+			<generator class="native" />
+
+		</id>
+
+		<property name="label" type="java.lang.String" column="label"
+
+			not-null="true" length="250" />
+
+		<set name="questions" table="question_option" cascade="all">
+
+			<key column="optionId" />
+
+			<many-to-many column="questionId"
+				class="in.co.vertex.feedback.model.Question" />
+
+		</set>
+
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.xyz.rcp.firstapplication.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.xyz.rcp.firstapplication.Perspective"
+            fixed="false"
+            id="com.xyz.rcp.firstapplication.perspective"
+            name="RCP Perspective">
+      </perspective>
+   </extension>
+   <extension
+         id="Product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.xyz.rcp.firstapplication.application"
+            name="FirstApplication">
+         <property
+               name="appName"
+               value="FirstApplication">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.xyz.rcp.firstapplication.view.tableviewer.TableViewerView07"
+            id="com.xyz.rcp.firstapplication.tableviewer"
+            name="TableView"
+            restorable="true">
+      </view>
+      <view
+            class="com.xyz.rcp.firstapplication.view.tableviewer.ChangeView"
+            id="com.xyz.rcp.firstapplication.tableviewer.changeview"
+            name="ChangeView"
+            restorable="true">
+      </view>
+      <view
+            class="com.xyz.rcp.firstapplication.view.treeviewer.TreeViewerView"
+            icon="icons/org_16.png"
+            id="com.xyz.rcp.firstapplication.treeviewerview"
+            name="TreeNavigator"
+            restorable="true">
+      </view>
+      <view
+            class="com.xyz.rcp.firstapplication.view.treeviewer.EmployeeDetailView"
+            icon="icons/person_16.png"
+            id="com.xyz.rcp.firstapplication.empdetailsview"
+            name="Employee Detail"
+            restorable="true">
+      </view>
+      <view
+            class="com.xyz.rcp.firstapplication.view.IndustryDnDView"
+            id="com.xyz.rcp.firstapplication.industrydndview"
+            name="Industry Dnd View"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="com.xyz.rcp.firstapplication.perspective">
+         <view
+               id="com.xyz.rcp.firstapplication.tableviewer"
+               minimized="false"
+               relationship="bottom"
+               relative="org.eclipse.ui.editorss">
+         </view>
+         <view
+               id="com.xyz.rcp.firstapplication.treeviewerview"
+               minimized="false"
+               ratio=".2f"
+               relationship="left"
+               relative="org.eclipse.ui.editorss"
+               visible="true">
+         </view>
+         <view
+               id="com.xyz.rcp.firstapplication.empdetailsview"
+               minimized="false"
+               relationship="stack"
+               relative="com.xyz.rcp.firstapplication.tableviewer"
+               visible="true">
+         </view>
+         <view
+               id="com.xyz.rcp.firstapplication.industrydndview"
+               minimized="false"
+               relationship="stack"
+               relative="com.xyz.rcp.firstapplication.empdetailsview"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <command
+               commandId="com.xyz.rcp.firstapplication.tableviewer.commands.Print"
+               id="com.xyz.rcp.firstapplication.tableviewer.commands.Print"
+               label="Print Model"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
+               id="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
+               label="Add Person"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.tableviewer.commands.DeletePerson"
+               id="com.xyz.rcp.firstapplication.tableviewer.commands.DeletePerson"
+               label="Delete Person"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.tableviewer.commands.CopyPersonClipboard"
+               defaultHandler="de.vogella.jface.tableviewer.commands.CopyPersonClipboard"
+               id="com.xyz.rcp.firstapplication.tableviewer.commands.CopyPersonClipboard"
+               label="Copy to Clipboard"
+               name="Copy Person to Clipboard">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.Print"
+            id="com.xyz.rcp.firstapplication.tableviewer.commands.Print"
+            name="Print">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
+            id="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
+            name="Add Person">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.DeletePerson"
+            id="com.xyz.rcp.firstapplication.tableviewer.commands.DeletePerson"
+            name="Delete Person">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.CopyPersonClipboard"
+            id="com.xyz.rcp.firstapplication.tableviewer.commands.CopyPersonClipboard"
+            name="Copy Person to Clipboard">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.CallEditor"
+            id="com.xyz.rcp.firstapplication.openpersoneditor"
+            name="Open PersonEditor">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.xyz.rcp.firstapplication.editor.MyPersonEditor"
+            default="false"
+            id="com.xyz.rcp.firstapplication.personeditor"
+            name="Person Editor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+
+
+	<package name="charts" namespace="/feedback" extends="jfreechart-default">
+
+		<action name="chart1" class="in.co.vertex.feedback.j2p.GetChartAction">
+			<result name="success" type="chart">
+				<param name="width">800</param>
+				<param name="height">600</param>
+			</result>
+		</action>
+
+
+		<action name="chartForBatchId"
+			class="in.co.vertex.feedback.j2p.GetChartForBatchIdAction">
+			<result name="success" type="chart">
+				<param name="width">1400</param>
+				<param name="height">900</param>
+			</result>
+		</action>
+	</package>
+
+
+
+	<package name="feedback" namespace="/feedback" extends="struts-default">
+
+
+		<action name="feedbackJ2P" class="in.co.vertex.feedback.j2p.J2PFeedback">
+			<result>/pages/j2pfeedbackform.jsp</result>
+		</action>
+		<action name="feedbackTraining" class="in.co.vertex.feedback.j2p.TrainingFeedback">
+			<result>/pages/trainingfeedbackform.jsp</result>
+		</action>
+		<action name="j2pformsubmit" class="in.co.vertex.feedback.j2p.J2PFormSubmit">
+			<!-- <result name="error">/pages/login.jsp</result>-->
+			<result>/pages/feedbacksuccess.jsp</result>
+		</action>
+		<action name="getreports" class="in.co.vertex.feedback.j2p.GetBatchsAction">
+			<result>/pages/getbatchs.jsp</result>
+		</action>
+		<action name="showreportforbatch" class="in.co.vertex.feedback.j2p.GetBatchReportAction">
+			<result>/pages/showReport.jsp</result>
+		</action>
+
+		<action name="doLogin" class="in.co.vertex.feedback.j2p.loginAction">
+			<result name="success" type="dispatcher">/pages/menupage.htm</result>
+			<result name="input" type="redirect">/index.jsp</result>
+			<result name="error" type="redirect">/index.jsp</result>
+		</action>
+
+
+		<!-- Add actions here -->
+	</package>
+
+
+
+	<!-- Add packages here -->
+
+</struts>
