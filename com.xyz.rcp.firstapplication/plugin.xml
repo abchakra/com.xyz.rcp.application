@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="greeterExtension" name="Greet Extension" schema="schema/greeterExtension.exsd"/>
 
    <extension
          id="application"
@@ -130,6 +131,31 @@
                label="Copy to Clipboard"
                name="Copy Person to Clipboard">
          </command>
+         <command
+               commandId="org.eclipse.ui.window.preferences"
+               label="Preferences"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.showPreferenceValues"
+               label="showPreferenceValues"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.activate"
+               label="Activate View"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.deactivate"
+               label="Deactivate View"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.greetercommand"
+               label="Greet Me"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -159,6 +185,26 @@
             id="com.xyz.rcp.firstapplication.openpersoneditor"
             name="Open PersonEditor">
       </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplicaiton.preference.ShowPreferenceValues"
+            id="com.xyz.rcp.firstapplication.showPreferenceValues"
+            name="showPreferenceValues">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.activities.Activate"
+            id="com.xyz.rcp.firstapplication.activate"
+            name="Activate">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.activities.DeActivate"
+            id="com.xyz.rcp.firstapplication.deactivate"
+            name="Deactivate">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.extensionpoint.EvaluateContributionsHandler"
+            id="com.xyz.rcp.firstapplication.greetercommand"
+            name="Greet Me">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
@@ -168,6 +214,37 @@
             id="com.xyz.rcp.firstapplication.personeditor"
             name="Person Editor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.xyz.rcp.firstapplicaiton.preference.MyPreferencePage"
+            id="com.xyz.rcp.firstapplication.preferencepage"
+            name="My Preference">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.xyz.rcp.firstapplicaiton.preference.MyInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="com.xyz.rcp.firstapplication.hideviewactivity"
+            name="Hide a View Activity">
+      </activity>
+      <activityPatternBinding
+            activityId="com.xyz.rcp.firstapplication.hideviewactivity"
+            isEqualityPattern="false"
+            pattern="com.xyz.rcp.firstapplication/com.xyz.rcp.firstapplication.industrydndview">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.xyz.rcp.firstapplication.hideviewactivity"
+            isEqualityPattern="true"
+            pattern="com.xyz.rcp.firstapplication/com.xyz.rcp.firstapplication.industrydndview">
+      </activityPatternBinding>
    </extension>
 
 </plugin>
