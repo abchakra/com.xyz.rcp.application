@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:Industry xmlns:ns0="http://com.xyz.rcp/employee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://com.xyz.rcp/employee ../schema/Employee.xsd ">
+	<ns0:name>Computers</ns0:name>
+	<ns0:organisations>
+		<ns0:name>Tibco Software</ns0:name>
+		<ns0:type>Private</ns0:type>
+		<ns0:industry>Computer Software</ns0:industry>
+		<ns0:headquarters>Palo Alto</ns0:headquarters>
+		<ns0:founded>1995</ns0:founded>
+		<ns0:revenue>100</ns0:revenue>
+		<ns0:employees>
+			<ns0:empID>2010</ns0:empID>
+			<ns0:firstName>Tom</ns0:firstName>
+			<ns0:lastName>Jhonson</ns0:lastName>
+			<ns0:married>true</ns0:married>
+			<ns0:gender>Male</ns0:gender>
+			<ns0:age>30</ns0:age>
+			<ns0:address>
+				<ns0:street>FC street</ns0:street>
+				<ns0:number>11</ns0:number>
+				<ns0:postalCode>411002</ns0:postalCode>
+				<ns0:city>Pune</ns0:city>
+				<ns0:country>India</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>2011</ns0:empID>
+			<ns0:firstName>Rainer</ns0:firstName>
+			<ns0:lastName>Zufall</ns0:lastName>
+			<ns0:married>true</ns0:married>
+			<ns0:gender>male</ns0:gender>
+			<ns0:age>28</ns0:age>
+			<ns0:address>
+				<ns0:street>MG street</ns0:street>
+				<ns0:number>12</ns0:number>
+				<ns0:postalCode>411003</ns0:postalCode>
+				<ns0:city>Mumbai</ns0:city>
+				<ns0:country>India</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>2012</ns0:empID>
+			<ns0:firstName>Marie</ns0:firstName>
+			<ns0:lastName>Watson</ns0:lastName>
+			<ns0:married>false</ns0:married>
+			<ns0:gender>female</ns0:gender>
+			<ns0:age>24</ns0:age>
+			<ns0:address>
+				<ns0:street>Arthur street</ns0:street>
+				<ns0:number>05</ns0:number>
+				<ns0:postalCode>322001</ns0:postalCode>
+				<ns0:city>New York</ns0:city>
+				<ns0:country>U.S.A</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>2013</ns0:empID>
+			<ns0:firstName>Amanda</ns0:firstName>
+			<ns0:lastName>Peet</ns0:lastName>
+			<ns0:married>false</ns0:married>
+			<ns0:gender>female</ns0:gender>
+			<ns0:age>27</ns0:age>
+			<ns0:address>
+				<ns0:street>St.teresa Street</ns0:street>
+				<ns0:number>17</ns0:number>
+				<ns0:postalCode>522001</ns0:postalCode>
+				<ns0:city>LiverPool</ns0:city>
+				<ns0:country>England</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>2014</ns0:empID>
+			<ns0:firstName>Lionel</ns0:firstName>
+			<ns0:lastName>Messi</ns0:lastName>
+			<ns0:married>false</ns0:married>
+			<ns0:gender>male</ns0:gender>
+			<ns0:age>26</ns0:age>
+			<ns0:address>
+				<ns0:street>La Allemeda</ns0:street>
+				<ns0:number>19</ns0:number>
+				<ns0:postalCode>600332</ns0:postalCode>
+				<ns0:city>Barcelona</ns0:city>
+				<ns0:country>Spain</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+	</ns0:organisations>
+	<ns0:organisations>
+		<ns0:name>Universal Networking</ns0:name>
+		<ns0:type>Private</ns0:type>
+		<ns0:industry>Computer Software</ns0:industry>
+		<ns0:headquarters>San Diago</ns0:headquarters>
+		<ns0:founded>1983</ns0:founded>
+		<ns0:revenue>120</ns0:revenue>
+		<ns0:employees>
+			<ns0:empID>3011</ns0:empID>
+			<ns0:firstName>Holger</ns0:firstName>
+			<ns0:lastName>Adams</ns0:lastName>
+			<ns0:married>false</ns0:married>
+			<ns0:gender>Male</ns0:gender>
+			<ns0:age>32</ns0:age>
+			<ns0:address>
+				<ns0:street>FS street</ns0:street>
+				<ns0:number>15</ns0:number>
+				<ns0:postalCode>411008</ns0:postalCode>
+				<ns0:city>Chennai</ns0:city>
+				<ns0:country>India</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>3012</ns0:empID>
+			<ns0:firstName>Jack</ns0:firstName>
+			<ns0:lastName>Thomson</ns0:lastName>
+			<ns0:married>false</ns0:married>
+			<ns0:gender>male</ns0:gender>
+			<ns0:age>28</ns0:age>
+			<ns0:address>
+				<ns0:street>MG street</ns0:street>
+				<ns0:number>12</ns0:number>
+				<ns0:postalCode>421001</ns0:postalCode>
+				<ns0:city>Mumbai</ns0:city>
+				<ns0:country>India</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>3013</ns0:empID>
+			<ns0:firstName>Issac</ns0:firstName>
+			<ns0:lastName>Allen</ns0:lastName>
+			<ns0:married>true</ns0:married>
+			<ns0:gender>male</ns0:gender>
+			<ns0:age>24</ns0:age>
+			<ns0:address>
+				<ns0:street>RD street</ns0:street>
+				<ns0:number>09</ns0:number>
+				<ns0:postalCode>432012</ns0:postalCode>
+				<ns0:city>New York</ns0:city>
+				<ns0:country>U.S.A</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>2013</ns0:empID>
+			<ns0:firstName>Robbin</ns0:firstName>
+			<ns0:lastName>Jefferson</ns0:lastName>
+			<ns0:married>true</ns0:married>
+			<ns0:gender>male</ns0:gender>
+			<ns0:age>29</ns0:age>
+			<ns0:address>
+				<ns0:street>St.George Street</ns0:street>
+				<ns0:number>18</ns0:number>
+				<ns0:postalCode>522002</ns0:postalCode>
+				<ns0:city>Manchester</ns0:city>
+				<ns0:country>England</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+		<ns0:employees>
+			<ns0:empID>2014</ns0:empID>
+			<ns0:firstName>Elizabeth</ns0:firstName>
+			<ns0:lastName>Turner</ns0:lastName>
+			<ns0:married>false</ns0:married>
+			<ns0:gender>female</ns0:gender>
+			<ns0:age>26</ns0:age>
+			<ns0:address>
+				<ns0:street>RR street</ns0:street>
+				<ns0:number>45</ns0:number>
+				<ns0:postalCode>600311</ns0:postalCode>
+				<ns0:city>Bermingham</ns0:city>
+				<ns0:country>England</ns0:country>
+			</ns0:address>
+		</ns0:employees>
+	</ns0:organisations>
+</ns0:Industry>

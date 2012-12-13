@@ -34,13 +34,12 @@ public class EvaluateContributionsHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
 		IExtensionRegistry registry = Platform.getExtensionRegistry();
-		IExtensionPoint activityDesignExtensionPoint = registry
+		IExtensionPoint extensionPoint = registry
 				.getExtensionPoint(IGREETER_ID);
 
 		// get all extensions of "com.tibco.bw.design.ActivityType" extension
 		// point
-		IExtension[] allExtensions = activityDesignExtensionPoint
-				.getExtensions();
+		IExtension[] allExtensions = extensionPoint.getExtensions();
 		for (IExtension anExtension : allExtensions) {
 			IConfigurationElement[] config = anExtension
 					.getConfigurationElements();

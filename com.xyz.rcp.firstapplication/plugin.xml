@@ -111,18 +111,36 @@
                id="com.xyz.rcp.firstapplication.tableviewer.commands.Print"
                label="Print Model"
                style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="oneElementSelected">
+               </reference>
+            </visibleWhen>
          </command>
          <command
                commandId="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
                id="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
                label="Add Person"
                style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="oneElementSelected">
+               </reference>
+            </visibleWhen>
          </command>
          <command
                commandId="com.xyz.rcp.firstapplication.tableviewer.commands.DeletePerson"
                id="com.xyz.rcp.firstapplication.tableviewer.commands.DeletePerson"
                label="Delete Person"
                style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="oneElementSelected">
+               </reference>
+            </visibleWhen>
          </command>
          <command
                commandId="com.xyz.rcp.firstapplication.tableviewer.commands.CopyPersonClipboard"
@@ -130,6 +148,12 @@
                id="com.xyz.rcp.firstapplication.tableviewer.commands.CopyPersonClipboard"
                label="Copy to Clipboard"
                name="Copy Person to Clipboard">
+            <visibleWhen
+                  checkEnabled="false">
+               <reference
+                     definitionId="oneElementSelected">
+               </reference>
+            </visibleWhen>
          </command>
          <command
                commandId="org.eclipse.ui.window.preferences"
@@ -166,7 +190,6 @@
             name="Print">
       </command>
       <command
-            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
             id="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
             name="Add Person">
       </command>
@@ -245,6 +268,54 @@
             isEqualityPattern="true"
             pattern="com.xyz.rcp.firstapplication/com.xyz.rcp.firstapplication.industrydndview">
       </activityPatternBinding>
+   </extension>
+   <extension
+         point="org.eclipse.core.resources.refreshProviders">
+      <refreshProvider
+            class="org.eclipse.core.internal.resources.refresh.win32.Win32RefreshProvider"
+            name="win32MonitorFactoryName">
+      </refreshProvider>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="oneElementSelected">
+         <with
+               variable="selection">
+            <count
+                  value="1">
+            </count>
+         </with>
+      </definition>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
+            commandId="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson">
+         <enabledWhen>
+            <reference
+                  definitionId="oneElementSelected">
+            </reference>
+         </enabledWhen>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.xyz.rcp.firstapplication.tableviewer.commands.DeletePerson"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+1">
+      </key>
+      <scheme
+            id="myscheme"
+            name="myscheme">
+      </scheme>
+      <key
+            commandId="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
+            schemeId="myscheme"
+            sequence="M1+N">
+      </key>
    </extension>
 
 </plugin>

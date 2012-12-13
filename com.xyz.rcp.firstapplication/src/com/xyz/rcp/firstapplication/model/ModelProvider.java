@@ -57,6 +57,9 @@ public enum ModelProvider {
 		orgs = new ArrayList<Organisation>();
 		// Image here some fancy database access to read the persons and to
 		// put them into the model
+
+//		ReadXMLFile.readXML(orgs);
+
 		orgs.add(new Organisation("TIBCO", "Public", "Computer Software",
 				"Palo Alto", 1997, 920000000, getTibcoPersons()));
 		orgs.add(new Organisation("Progress Software Corporation", "Public",
