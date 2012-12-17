@@ -8,16 +8,16 @@ import com.xyz.rcp.firstapplication.model.Person;
 
 public class MyPersonEditorInput implements IEditorInput {
 
-	private final int id;
+	private final Person person;
 
 	// private final Person person;
 
-	public MyPersonEditorInput(int id) {
-		this.id = id;
+	public MyPersonEditorInput(Person person) {
+		this.person = person;
 	}
 
-	public int getId() {
-		return id;
+	public Person getPerson() {
+		return person;
 	}
 
 	@Override
@@ -32,7 +32,8 @@ public class MyPersonEditorInput implements IEditorInput {
 
 	@Override
 	public String getName() {
-		return String.valueOf(id);
+		return person.getFirstName() + " " + person.getLastName() + " "
+				+ person.getId();
 	}
 
 	@Override
@@ -54,7 +55,7 @@ public class MyPersonEditorInput implements IEditorInput {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + person.getId();
 		return result;
 	}
 
@@ -67,7 +68,7 @@ public class MyPersonEditorInput implements IEditorInput {
 		if (getClass() != obj.getClass())
 			return false;
 		MyPersonEditorInput other = (MyPersonEditorInput) obj;
-		if (id != other.id)
+		if (person.getId() != ((Person) other.getPerson()).getId())
 			return false;
 		return true;
 	}

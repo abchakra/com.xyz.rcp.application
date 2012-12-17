@@ -372,5 +372,64 @@
             sequence="M1+N">
       </key>
    </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+            id="com.xyz.rcp.firstapplication.popupviewerContribution"
+            targetID="com.xyz.rcp.firstapplication.personeditor">
+         <action
+               class="com.xyz.rcp.firstapplication.actions.ViewerPopupAction"
+               id="com.xyz.rcp.firstapplication.popupvieweraction"
+               label="ViewerPopup"
+               menubarPath="additions">
+         </action>
+      </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="com.xyz.rcp.firstapplication.refreshtableviewContribution"
+            targetID="com.xyz.rcp.firstapplication.tableviewer">
+         <action
+               class="com.xyz.rcp.firstapplication.actions.RefreshTableViewActionDelegate"
+               enablesFor="*"
+               id="com.xyz.rcp.firstapplication.refreshtableaction"
+               label="ViewActions ExtensionPoint"
+               menubarPath="toolbarTable"
+               style="push"
+               toolbarPath="toolbarTable">
+         </action>
+      </viewContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="com.xyz.rcp.firstapplication.demoactionSet"
+            label="ActionSet"
+            visible="true">
+         <action
+               class="com.xyz.rcp.firstapplication.actions.ActionSetAction1"
+               icon="icons/action_go.gif"
+               id="com.xyz.rcp.firstapplication.action1"
+               label="action1"
+               toolbarPath="org.eclipse.ui.workbench.navigate"
+               tooltip="action1">
+         </action>
+         <action
+               class="com.xyz.rcp.firstapplication.actions.ActionSetAction2"
+               icon="icons/action_back.gif"
+               id="com.xyz.rcp.firstapplication.action2"
+               label="action2"
+               toolbarPath="org.eclipse.ui.workbench.navigate"
+               tooltip="action2">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.xyz.rcp.firstapplication.ApplicationStartupTasks">
+      </startup>
+   </extension>
 
 </plugin>

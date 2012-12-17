@@ -14,7 +14,6 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.EditorPart;
 
-import com.xyz.rcp.firstapplication.model.Address;
 import com.xyz.rcp.firstapplication.model.Person;
 
 public class MyPersonEditor extends EditorPart {
@@ -35,10 +34,10 @@ public class MyPersonEditor extends EditorPart {
 		this.input = (MyPersonEditorInput) input;
 		setSite(site);
 		setInput(input);
-		person = new Person("Tom", "Hillman", "male", true, 45, new Address(
-				"411001", "Pune", "India"));
-		person.setID(17818);
-		// person = MyModel.getInstance().getPersonById(this.input.getId());
+		// person = new Person("Tom", "Hillman", "male", true, 45, new Address(
+		// "411001", "Pune", "India"));
+		// person.setID(17818);
+		person = this.input.getPerson();
 
 		setPartName("Person ID: " + person.getId());
 	}

@@ -38,6 +38,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.part.ViewPart;
 
 import com.xyz.rcp.firstapplication.Activator;
+import com.xyz.rcp.firstapplication.actions.CustomAction;
 import com.xyz.rcp.firstapplication.model.Organisation;
 import com.xyz.rcp.firstapplication.model.Person;
 import com.xyz.rcp.firstapplication.util.FirstNameEditingSupport;
@@ -95,6 +96,13 @@ public class TableViewerView07 extends ViewPart {
 		});
 
 		viewer.addFilter(filter);
+
+		// Custom Action for the View's Menu
+		CustomAction lCustomAction = new CustomAction();
+		lCustomAction.setText("Open Dialog Box");
+		lCustomAction.setImageDescriptor(Activator
+				.getImageDescriptor("icons/custom.png"));
+		getViewSite().getActionBars().getToolBarManager().add(lCustomAction);
 	}
 
 	private void createViewer(Composite parent) {

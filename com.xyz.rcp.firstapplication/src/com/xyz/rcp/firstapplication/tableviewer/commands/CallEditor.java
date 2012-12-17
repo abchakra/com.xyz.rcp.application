@@ -32,8 +32,7 @@ public class CallEditor extends AbstractHandler {
 			// If we had a selection lets open the editor
 			if (obj != null && obj instanceof Person) {
 				Person person = (Person) obj;
-				MyPersonEditorInput input = new MyPersonEditorInput(
-						person.getId());
+				MyPersonEditorInput input = new MyPersonEditorInput(person);
 				try {
 					page.openEditor(input, MyPersonEditor.ID);
 
