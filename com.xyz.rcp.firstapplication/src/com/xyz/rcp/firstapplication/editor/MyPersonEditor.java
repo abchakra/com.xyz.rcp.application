@@ -2,6 +2,8 @@ package com.xyz.rcp.firstapplication.editor;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -15,12 +17,15 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.part.EditorPart;
 
 import com.xyz.rcp.firstapplication.model.Person;
+import com.xyz.rcp.firstapplication.util.FirstNameEditingSupport;
 
 public class MyPersonEditor extends EditorPart {
 	public static final String ID = "com.xyz.rcp.firstapplication.personeditor";
 	private Person person;
 	private MyPersonEditorInput input;
 	private boolean dirty = false;
+	private Text firstName;
+	private Text lastName;
 
 	// Will be called before createPartControl
 	@Override
@@ -68,25 +73,46 @@ public class MyPersonEditor extends EditorPart {
 		client.setLayout(layout);
 
 		toolkit.createLabel(client, "First Name");
-		Text text = toolkit.createText(client, person.getFirstName());
-		text.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true, false));
+		firstName = toolkit.createText(client, person.getFirstName());
+		firstName.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true,
+				false));
 		toolkit.createLabel(client, "Last Name");
-		Text lastName = toolkit.createText(client, person.getLastName());
+		lastName = toolkit.createText(client, person.getLastName());
 		lastName.setLayoutData(new GridData(SWT.FILL, SWT.BEGINNING, true,
 				false));
+
+		firstName.addModifyListener(getModifyListener());
+		lastName.addModifyListener(getModifyListener());
 
 		toolkit.paintBordersFor(client);
 		section.setClient(client);
 
 	}
 
+	private ModifyListener getModifyListener() {
+		return new ModifyListener() {
+
+			@Override
+			public void modifyText(ModifyEvent e) {
+				// TODO Auto-generated method stub
+
+				setDirty(true);
+			}
+		};
+	}
+
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		// person.getAddress().setCountry(text2.getText());
+		person.setFirstName(firstName.getText());
+		person.setLastName(lastName.getText());
+
 	}
 
 	@Override
 	public void doSaveAs() {
+
+		System.out.println();
 	}
 
 	@Override
@@ -96,7 +122,7 @@ public class MyPersonEditor extends EditorPart {
 
 	@Override
 	public boolean isSaveAsAllowed() {
-		return false;
+		return true;
 	}
 
 	@Override
