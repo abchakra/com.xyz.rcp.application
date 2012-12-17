@@ -19,7 +19,7 @@ public class ReadXMLFile {
 		try {
 
 			File fXmlFile = new File(
-					"C:\\Users\\vattarde\\Documents\\GitHub\\com.xyz.rcp.application\\com.xyz.rcp.firstapplication\\data\\NewFile.xml");
+					"C:\\Users\\abchakra\\Documents\\GitHub\\com.xyz.rcp.application\\com.xyz.rcp.firstapplication\\data\\NewFile.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -59,12 +59,12 @@ public class ReadXMLFile {
 		return nValue.getNodeValue();
 	}
 
-	public static List<Organisation> readXML(List<Organisation> orgs) {
+	public static void readXML(List<Organisation> orgs) {
 
 		try {
 
 			File fXmlFile = new File(
-					"C:\\Users\\vattarde\\Documents\\GitHub\\com.xyz.rcp.application\\com.xyz.rcp.firstapplication\\data\\NewFile.xml");
+					"C:\\Users\\abchakra\\Documents\\GitHub\\com.xyz.rcp.application\\com.xyz.rcp.firstapplication\\data\\NewFile.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -91,33 +91,18 @@ public class ReadXMLFile {
 
 						ArrayList<Person> persons = new ArrayList<Person>();
 						NodeList nPersonList = eElement.getChildNodes();
-						for (int temp2 = 0; temp2 < nPersonList.getLength(); temp2++) {
-							Node nNode2 = nPersonList.item(temp2);
+						for (int temp2 = 0; temp < nList.getLength(); temp++) {
+							Node nNode2 = nList.item(temp);
 							if (nNode2.getNodeType() == Node.ELEMENT_NODE) {
 
-								Element eElement2 = (Element) nNode2;
+								Element eElement2 = (Element) nNode;
 								if (eElement2.getNodeName().equals(
 										"ns0:employees")) {
 
 									Person person = new Person();
 									person.setFirstName(getTagValue(
-											"ns0:firstName", eElement2));
-									person.setLastName(getTagValue("ns0:lastName", eElement2));
-                                    person.setAge(new Integer(getTagValue(
-											"ns0:age", eElement2)));
-                                    person.setGender(getTagValue(
-											"ns0:gender", eElement2));
-                                    String value=getTagValue(
-											"ns0:empID", eElement2);
-                                    person.setID(Integer.parseInt(value));
-                                   person.setAddress(new Address(getTagValue(
-											"ns0:postalCode", eElement2),getTagValue(
-													"ns0:city", eElement2) ,getTagValue(
-															"ns0:country", eElement2)));
-                                   String married=getTagValue(
-											"ns0:married", eElement2);
-                                   person.setMarried(Boolean.parseBoolean(married));
-                                    
+											"ns0:firstName", eElement));
+
 									persons.add(person);
 								}
 
@@ -133,7 +118,6 @@ public class ReadXMLFile {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return orgs;
 	}
- 
+
 }
