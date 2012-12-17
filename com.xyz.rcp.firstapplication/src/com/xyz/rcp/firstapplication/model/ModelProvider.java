@@ -58,9 +58,10 @@ public enum ModelProvider {
 		// Image here some fancy database access to read the persons and to
 		// put them into the model
 
-//		ReadXMLFile.readXML(orgs);
+     	orgs=ReadXMLFile.readXML(orgs);
+     	System.out.println(orgs);
 
-		orgs.add(new Organisation("TIBCO", "Public", "Computer Software",
+	/*	orgs.add(new Organisation("TIBCO", "Public", "Computer Software",
 				"Palo Alto", 1997, 920000000, getTibcoPersons()));
 		orgs.add(new Organisation("Progress Software Corporation", "Public",
 				"Computer Software", "Bedford", 1981, 123214534,
@@ -71,10 +72,11 @@ public enum ModelProvider {
 				1981, 123214534, getYahooPersons()));
 		orgs.add(new Organisation("SanDisk Corporation", "Public",
 				"Computer Storage", "Milpitas", 1988, 890000,
-				getSandiskPersons()));
+				getSandiskPersons()));*/
 		return orgs;
 	}
 
+	@SuppressWarnings("unused")
 	private List<Person> getSandiskPersons() {
 		persons = new ArrayList<Person>();
 		persons.add(new Person("Tom", "Hillman", "male", true, 45, new Address(

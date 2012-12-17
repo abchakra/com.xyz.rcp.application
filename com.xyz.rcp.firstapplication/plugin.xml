@@ -181,9 +181,44 @@
                style="push">
          </command>
       </menuContribution>
+      <menuContribution
+            allPopups="true"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="com.xyz.rcp.firstapplication.wizard.toolbar2"
+               label="PullDown">
+            <command
+                  commandId="com.xyz.rcp.firstapplication.wizard.DropDown"
+                  icon="icons/alt_window_16.gif"
+                  label="PullDownCommand"
+                  style="pulldown">
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="true"
+            locationURI="menu:com.xyz.rcp.firstapplication.wizard.DropDown">
+         <command
+               commandId="com.xyz.rcp.firstapplication.PrintTree"
+               icon="icons/alt_window_16.gif"
+               label="PrintTree"
+               style="push">
+         </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.AddPersonInPullDown"
+               icon="icons/alt_window_16.gif"
+               label="AddPersonInPullDown"
+               style="push">
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="com.xyz.firstapplication.wizard.PrintModelHandler"
+            id="com.xyz.rcp.firstapplication.PrintTree"
+            name="PrintTree">
+      </command>
       <command
             defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.Print"
             id="com.xyz.rcp.firstapplication.tableviewer.commands.Print"
@@ -204,14 +239,14 @@
             name="Copy Person to Clipboard">
       </command>
       <command
-            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.CallEditor"
-            id="com.xyz.rcp.firstapplication.openpersoneditor"
-            name="Open PersonEditor">
-      </command>
-      <command
             defaultHandler="com.xyz.rcp.firstapplicaiton.preference.ShowPreferenceValues"
             id="com.xyz.rcp.firstapplication.showPreferenceValues"
             name="showPreferenceValues">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.CallEditor"
+            id="com.xyz.rcp.firstapplication.openpersoneditor"
+            name="Open PersonEditor">
       </command>
       <command
             defaultHandler="com.xyz.rcp.firstapplication.activities.Activate"
@@ -227,6 +262,16 @@
             defaultHandler="com.xyz.rcp.firstapplication.extensionpoint.EvaluateContributionsHandler"
             id="com.xyz.rcp.firstapplication.greetercommand"
             name="Greet Me">
+      </command>
+      <command
+            defaultHandler="com.xyz.firstapplication.wizard.DropDownHandler"
+            id="com.xyz.rcp.firstapplication.wizard.DropDown"
+            name="DropDown">
+      </command>
+      <command
+            defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
+            id="com.xyz.rcp.firstapplication.AddPersonInPullDown"
+            name="AddPersonInPullDown">
       </command>
    </extension>
    <extension
@@ -311,6 +356,16 @@
             id="myscheme"
             name="myscheme">
       </scheme>
+      <key
+            commandId="com.xyz.rcp.firstapplication.AddPersonInPullDown"
+            schemeId="myscheme"
+            sequence="M1+Q">
+      </key>
+      <key
+            commandId="com.xyz.rcp.firstapplication.PrintTree"
+            schemeId="myscheme"
+            sequence="M1+P">
+      </key>
       <key
             commandId="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
             schemeId="myscheme"
