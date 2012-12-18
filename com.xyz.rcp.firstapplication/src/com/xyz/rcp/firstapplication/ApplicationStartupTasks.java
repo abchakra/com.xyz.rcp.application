@@ -46,16 +46,7 @@ public class ApplicationStartupTasks implements IStartup {
 				}
 				
 				
-				// get the delta, if any, for the documentation directory
-				// IResourceDelta docDelta = rootDelta.findMember(DOC_PATH);
-				// if (docDelta == null)
-				// return;
-				IResource resource = rootDelta.getResource();
-				// only interested in files with the "txt" extension
-				if (resource.getType() == IResource.FILE
-						&& "txt".equalsIgnoreCase(resource.getFileExtension())) {
-					changed.add(resource);
-				}
+				
 				System.out.println("Something changed!" + changed);
 			}
 		};
