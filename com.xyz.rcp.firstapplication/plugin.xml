@@ -67,6 +67,12 @@
             name="Industry Dnd View"
             restorable="true">
       </view>
+      <view
+            class="org.eclipse.ui.navigator.CommonNavigator"
+            id="com.xyz.rcp.firstapplication.navigatorview"
+            name="CommonNavigator"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
@@ -83,7 +89,7 @@
                minimized="false"
                ratio=".2f"
                relationship="left"
-               relative="org.eclipse.ui.editorss"
+               relative="com.xyz.rcp.firstapplication.empdetailsview"
                visible="true">
          </view>
          <view
@@ -99,6 +105,13 @@
                relationship="stack"
                relative="com.xyz.rcp.firstapplication.empdetailsview"
                visible="true">
+         </view>
+         <view
+               id="com.xyz.rcp.firstapplication.navigatorview"
+               minimized="false"
+               ratio="1.0f"
+               relationship="left"
+               relative="org.eclipse.ui.editorss">
          </view>
       </perspectiveExtension>
    </extension>
@@ -430,6 +443,58 @@
       <startup
             class="com.xyz.rcp.firstapplication.ApplicationStartupTasks">
       </startup>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/star_bronze.png"
+            id="com.xyz.rcp.firstapplication.decorator"
+            label="decorator"
+            lightweight="true"
+            state="false">
+      </decorator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="com.xyz.rcp.firstapplication.navigatorview">
+         <includes>
+         <contentExtension pattern="org.eclipse.ui.navigator.resourceContent" />		       	      
+	     <contentExtension pattern="org.eclipse.ui.navigator.resources.filters.*"/>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+         
+         <navigatorContent 
+            id="org.eclipse.ui.examples.navigator.propertiesContent" 
+            name="Properties File Contents"
+            contentProvider="org.eclipse.ui.examples.navigator.PropertiesContentProvider"
+            labelProvider="org.eclipse.ui.examples.navigator.PropertiesLabelProvider" 
+            activeByDefault="true"
+            icon="icons/prop_ps.gif"
+            priority="normal" >
+         <triggerPoints>
+         	<or>
+	            <and>
+	               <instanceof value="org.eclipse.core.resources.IResource"/>
+	               <test
+	                     forcePluginActivation="true"
+	                     property="org.eclipse.core.resources.extension"
+	                     value="properties"/>
+	            </and>
+				<instanceof value="org.eclipse.ui.examples.navigator.PropertiesTreeData"/>
+			</or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+               <instanceof value="org.eclipse.ui.examples.navigator.PropertiesTreeData"/> 
+            </or>
+         </possibleChildren>
+      </navigatorContent>
+         
    </extension>
 
 </plugin>

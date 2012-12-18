@@ -1,9 +1,16 @@
 package com.xyz.rcp.firstapplication;
 
+import java.util.ArrayList;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.ui.IStartup;
 
 public class ApplicationStartupTasks implements IStartup {
@@ -13,7 +20,43 @@ public class ApplicationStartupTasks implements IStartup {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IResourceChangeListener listener = new IResourceChangeListener() {
 			public void resourceChanged(IResourceChangeEvent event) {
-				System.out.println("Something changed!");
+				final ArrayList changed = new ArrayList();
+				// we are only interested in POST_CHANGE events
+				if (event.getType() != IResourceChangeEvent.POST_CHANGE)
+					return;
+				IResourceDelta rootDelta = event.getDelta();
+				
+				
+				IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
+					@Override
+					public boolean visit(IResourceDelta delta) {
+						IResource resource = delta.getResource();
+						if (resource.getType() == IResource.FILE
+								&& "txt".equalsIgnoreCase(resource.getFileExtension())) {
+							changed.add((IFile) resource);
+						}
+						return true;
+					}
+				};
+				try {
+					rootDelta.accept(visitor);
+				} catch (CoreException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				// get the delta, if any, for the documentation directory
+				// IResourceDelta docDelta = rootDelta.findMember(DOC_PATH);
+				// if (docDelta == null)
+				// return;
+				IResource resource = rootDelta.getResource();
+				// only interested in files with the "txt" extension
+				if (resource.getType() == IResource.FILE
+						&& "txt".equalsIgnoreCase(resource.getFileExtension())) {
+					changed.add(resource);
+				}
+				System.out.println("Something changed!" + changed);
 			}
 		};
 		workspace.addResourceChangeListener(listener);

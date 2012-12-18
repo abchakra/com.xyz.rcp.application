@@ -94,7 +94,6 @@ public class MyPersonEditor extends EditorPart {
 
 			@Override
 			public void modifyText(ModifyEvent e) {
-				// TODO Auto-generated method stub
 
 				setDirty(true);
 			}
