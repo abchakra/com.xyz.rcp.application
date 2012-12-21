@@ -43,10 +43,10 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	public void preWindowOpen() {
 		IWorkbenchWindowConfigurer configurer = getWindowConfigurer();
 		configurer.setInitialSize(new Point(400, 300));
+		configurer.setShowProgressIndicator(true);
 		configurer.setShowCoolBar(true);
 		configurer.setShowStatusLine(false);
 		configurer.setShowMenuBar(true);
-
 		// TODO set true to display the Perspective Bar
 		configurer.setShowPerspectiveBar(true);
 		// configurer.setShowMenuBar(true);

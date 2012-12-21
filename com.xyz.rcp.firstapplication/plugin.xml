@@ -223,6 +223,12 @@
                label="AddPersonInPullDown"
                style="push">
          </command>
+         <command
+               commandId="com.xyz.rcp.firstapplication.TransferFiles"
+               icon="icons/alt_window_16.gif"
+               label="TransferFiles"
+               style="push">
+         </command>
       </menuContribution>
    </extension>
    <extension
@@ -285,6 +291,11 @@
             defaultHandler="com.xyz.rcp.firstapplication.tableviewer.commands.AddPerson"
             id="com.xyz.rcp.firstapplication.AddPersonInPullDown"
             name="AddPersonInPullDown">
+      </command>
+      <command
+            defaultHandler="com.xyz.firstapplication.wizard.TransferFileHandler"
+            id="com.xyz.rcp.firstapplication.TransferFiles"
+            name="TransferFiles">
       </command>
    </extension>
    <extension
@@ -447,12 +458,13 @@
    <extension
          point="org.eclipse.ui.decorators">
       <decorator
-            adaptable="true"
-            icon="icons/star_bronze.png"
+            adaptable="false"
+            class="com.xyz.rcp.firstapplication.actions.DecoratorImpl"
             id="com.xyz.rcp.firstapplication.decorator"
             label="decorator"
             lightweight="true"
-            state="false">
+            objectClass="com.xyz.rcp.firstapplication.util.PersonTreeLabelProvider"
+            state="true">
       </decorator>
    </extension>
    <extension

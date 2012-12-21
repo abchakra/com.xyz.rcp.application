@@ -64,7 +64,7 @@ public class ReadXMLFile {
 		try {
 
 			File fXmlFile = new File(
-					"C:\\Users\\abchakra\\Documents\\GitHub\\com.xyz.rcp.application\\com.xyz.rcp.firstapplication\\data\\NewFile.xml");
+					"C:\\Users\\vattarde\\Documents\\GitHub\\com.xyz.rcp.application\\com.xyz.rcp.firstapplication\\data\\NewFile.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
