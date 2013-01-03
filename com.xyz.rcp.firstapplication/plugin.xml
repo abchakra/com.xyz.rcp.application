@@ -408,6 +408,19 @@
                menubarPath="additions">
          </action>
       </viewerContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.ui.examples.navigator.actions.propertiesResource"
+            objectClass="org.eclipse.ui.examples.navigator.PropertiesTreeData">
+         <action
+               class="org.eclipse.ui.examples.navigator.DeletePropertyAction"
+               helpContextId="org.eclipse.ui.edit.delete"
+               id="org.eclipse.ui.examples.navigator.actions.DeletePropertyAction"
+               label="Delete Property"
+               menubarPath="group.edit"
+               tooltip="Delete Specific Property">
+         </action>
+      </objectContribution>
    </extension>
    <extension
          point="org.eclipse.ui.viewActions">
@@ -474,8 +487,72 @@
          <includes>
          <contentExtension pattern="org.eclipse.ui.navigator.resourceContent" />		       	      
 	     <contentExtension pattern="org.eclipse.ui.navigator.resources.filters.*"/>
+      <contentExtension
+            pattern="org.eclipse.ui.examples.navigator.filters.*">
+      </contentExtension>
          </includes>
       </viewerContentBinding>
+      <viewerActionBinding
+            viewerId="com.xyz.rcp.firstapplication.navigatorview">
+         <includes>
+            <actionExtension
+                  pattern="org.eclipse.ui.navigator.resources.*">
+            </actionExtension>
+         </includes>
+      </viewerActionBinding>
+      <viewerContentBinding
+            viewerId="com.xyz.rcp.firstapplication.navigatorview">
+         <includes>
+            <contentExtension
+                  pattern="org.eclipse.ui.examples.navigator.propertiesContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewer
+            viewerId="com.xyz.rcp.firstapplication.navigatorview">
+         <popupMenu
+               allowsPlatformContributions="true"
+               id="com.xyz.rcp.firstapplication.navigatorview#PopupMenu">
+            <insertionPoint
+                  name="group.new"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.open"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.openWith"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.edit"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.generate"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.search"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.build"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="additions"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.properties"
+                  separator="true">
+            </insertionPoint>
+            <insertionPoint
+                  name="group.port">
+            </insertionPoint></popupMenu>
+      </viewer>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
@@ -506,6 +583,21 @@
             </or>
          </possibleChildren>
       </navigatorContent>
+         <commonFilter
+               id="org.eclipse.ui.examples.navigator.filters.hideNonJavaProjects"
+               name="Hide non-Java projects">
+            <filterExpression>
+               <not>
+                  <adapt
+                        type="org.eclipse.core.resources.IProject">
+                     <test
+                           property="org.eclipse.core.resources.projectNature"
+                           value="org.eclipse.jdt.core.javanature">
+                     </test>
+                  </adapt>
+               </not>
+            </filterExpression>
+         </commonFilter>
          
    </extension>
 
